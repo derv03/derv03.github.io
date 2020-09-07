@@ -1,8 +1,9 @@
 .site-navbar {
-	// background: lighten($black, 17%);
+
 	margin-bottom: 0px;
-	z-index: 9;
+	z-index: 1999;
 	position: relative;
+	width: 100%;
 	
 	&.transparent {
 		background: transparent;
@@ -15,11 +16,10 @@
 	}
 
 	.site-logo {
-		position: absolute;
+		position: relative;
 		left: 0;
-		top: 0;
-		margin-top: -20px;
-		color: $white;
+		top: -5px;
+		
 	}
 	
 	.site-navigation {
@@ -32,25 +32,25 @@
 			.active {
 				> a {
 					color: $primary;
+					display: inline-block;
+					padding: 5px 20px;
 				}
 			}
 			a {
 				text-decoration: none!important;
-				font-size: 15px;
 				display: inline-block;
 			}
 			> li {
 				display: inline-block;
-				padding: 10px 5px;
 				> a {
-					padding: 10px 10px;
-					text-transform: uppercase;
-					letter-spacing: .1em;
-					color: rgba($white, .5);
-					font-size: 12px;
+					padding: 5px 10px;
+					color: $white;
+					display: inline-block;
 					text-decoration: none!important;
+					
 					&:hover {
 						color: $primary;
+						
 					}
 				}
 			}
@@ -85,7 +85,7 @@
 					margin-left: 0px;
 					background: $white;
 					transition: 0.2s 0s;
-
+				
 					&.arrow-top {
 						position: absolute;
 						&:before {
@@ -108,7 +108,7 @@
 					
 
 					a {
-						font-size: 16px;
+						// font-size: 16px;
 						text-transform: none;
 						letter-spacing: normal;
 						transition: 0s all;
@@ -153,9 +153,7 @@
 						}
 					}
 				}
-				a {
-					text-transform: uppercase;
-				}
+				
 				&:hover, &:focus, &:active {
 					> a {
 						color: $primary;
@@ -169,26 +167,9 @@
 						visibility: visible;
 						opacity: 1;
 
-
+				
 					}
 				}
-			}
-			
-			
-		}
-
-		
-
-	}
-
-}
-
-.site-menu {
-	&[data-class="social"] {
-		a {
-			color: rgba($white, .5);
-			&:hover {
-				color: $white;
 			}
 		}
 	}
@@ -209,9 +190,26 @@
 	transform: translateX(110%);
 	box-shadow: -10px 0 20px -10px rgba(0,0,0,.1);
 	transition: .3s all ease-in-out;
-
+	&:before {
+		content: "";
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 500%;
+		transform: translateX(-100%);
+		transition: .3s all ease;
+		background: rgba(0,0,0,.4);
+		opacity: 0;
+		visibility: hidden;
+	}
 	.offcanvas-menu & {
 		transform: translateX(0%);
+		&:before {
+			opacity: 1;
+			visibility: visible;
+		}
 	}
 
 	.site-mobile-menu-header {
@@ -255,7 +253,7 @@
 
 	.site-mobile-menu-body {
 		overflow-y: scroll;
-		-webkit-overflow-scrolling: touch;
+  	-webkit-overflow-scrolling: touch;
 		position: relative;
 		padding: 0 20px 20px 20px;
 
@@ -278,7 +276,7 @@
 			display: block;
 			position: relative;
 			color: $gray-900;
-			&:hover {
+			&.active, &:hover {
 				color: $primary;
 			}
 		}
@@ -355,24 +353,20 @@
 				}
 			}
 		}
-
-		&[data-class="social"] {
-			float: left;
-			width: 100%;
-			margin-top: 30px;
-			padding-bottom: 5em;
-			> li {
-				width: auto;
-				&:first-child {
-					a {
-						padding-left: 15px!important;
-					}
+	
+	&[data-class="social"] {
+		float: left;
+		width: 100%;
+		margin-top: 30px;
+		padding-bottom: 5em;
+		> li {
+			width: auto;
+			&:first-child {
+				a {
+					padding-left: 15px!important;
 				}
-
 			}
 		}
-
 	}
-
-
+	}
 }
