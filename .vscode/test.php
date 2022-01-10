@@ -1,3 +1,0 @@
-<test class="php">
-    
-</test>
