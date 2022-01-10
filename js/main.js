@@ -1,7 +1,7 @@
  AOS.init({
  	duration: 800,
  	easing: 'slide',
- 	once: false
+ 	once: true
  });
 
 jQuery(document).ready(function($) {
@@ -162,29 +162,25 @@ jQuery(document).ready(function($) {
 			$('.nonloop-block-13').owlCarousel({
 		    center: false,
 		    items: 1,
-		    loop: true,
+		    loop: false,
 				stagePadding: 0,
-		    margin: 0,
-		    autoplay: true,
+		    margin: 20,
 		    nav: true,
 				navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
 		    responsive:{
 	        600:{
-	        	margin: 0,
-	        	nav: true,
+	        	margin: 20,
 	          items: 2
 	        },
 	        1000:{
-	        	margin: 0,
+	        	margin: 20,
 	        	stagePadding: 0,
-	        	nav: true,
-	          items: 3
+	          items: 2
 	        },
 	        1200:{
-	        	margin: 0,
+	        	margin: 20,
 	        	stagePadding: 0,
-	        	nav: true,
-	          items: 4
+	          items: 3
 	        }
 		    }
 			});
@@ -196,7 +192,6 @@ jQuery(document).ready(function($) {
 	    loop: true,
 			stagePadding: 0,
 	    margin: 0,
-	    dots: true,
 	    autoplay: true,
 	    pauseOnHover: false,
 	    nav: true,
@@ -240,30 +235,60 @@ jQuery(document).ready(function($) {
 	};
 	siteDatePicker();
 
-	// navigation
-  var OnePageNavigation = function() {
-    var navToggler = $('.site-menu-toggle');
-   	$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
-      e.preventDefault();
-      var hash = this.hash;
-        $('html, body').animate({
-          'scrollTop': $(hash).offset().top
-        }, 800, 'swing', function(){
-          window.location.hash = hash;
-        });
+	var swiperSetting = function() {
+		var mySwiper = new Swiper ('.swiper-container', {
+	    // Optional parameters
+	    // direction: 'horizontal',
+	    // loop: true,
 
-    });
+	    // If we need pagination
+	    pagination: {
+	      el: '.swiper-pagination',
+	    },
 
-    // $("#menu li a[href^='#']").on('click', function(e){
-    //   e.preventDefault();
-    //   navToggler.trigger('click');
-    // });
+	    // Navigation arrows
+	    navigation: {
+	      nextEl: '.swiper-button-next',
+	      prevEl: '.swiper-button-prev',
+	    },
+	    mousewheel: {
+		  	invert: false,
+		  	forceToAxis: true,
+		  	releaseOnEdges: true,
+		  },
 
-    $('body').on('activate.bs.scrollspy', function () {
-      // console.log('nice');
-      // alert('yay');
-    })
-  };
-  OnePageNavigation();
+		  // direction: 'vertical',
+		  freeMode: true,
+      // slidesPerView: 'auto',
+      spaceBetween: 30,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+	    // And if we need scrollbar
+	    // scrollbar: {
+	    //   el: '.swiper-scrollbar',
+	    // },
+
+	    slidesPerView: 3,
+			breakpoints: {
+				668: {
+					slidesPerView: 1
+				},
+				1024: {
+					slidesPerView: 2 
+				}
+			},
+			// paginationClickable: false,
+			spaceBetween: 20,
+			// freeMode: true,
+			// grabCursor: true,
+			// mousewheelControl: true
+
+	  })
+	}
+	swiperSetting();
 
 });
